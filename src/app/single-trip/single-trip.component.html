@@ -1,0 +1,22 @@
+<td class="align-middle">
+    <a routerLink="/dashboard/tripDetails/{{trip._id}}">
+        <img src='{{trip.image}}' width=250 height=150 class="rounded-circle">
+    </a>
+</td>
+<td routerLink="/dashboard/tripDetails/{{trip._id}}" class="align-middle">{{trip.name | uppercase}}</td>
+<td routerLink="/dashboard/tripDetails/{{trip._id}}" class="align-middle">{{trip.country | uppercase}}</td>
+<td routerLink="/dashboard/tripDetails/{{trip._id}}" class="align-middle">{{trip.since | date: 'dd-MM-yyyy'}}</td>
+<td routerLink="/dashboard/tripDetails/{{trip._id}}" class="align-middle">{{trip.untill | date: 'dd-MM-yyyy'}}</td>
+<td routerLink="/dashboard/tripDetails/{{trip._id}}" class="align-middle">{{trip.price | currency:'PLN '}} </td>
+<td routerLink="/dashboard/tripDetails/{{trip._id}}" class="align-middle text-center">{{trip.totalPlaces}}<br><br></td>
+<td routerLink="/dashboard/tripDetails/{{trip._id}}" class="align-middle text-center">
+    {{trip.availablePlaces}}<br>
+    <kbd class="text-danger" [ngStyle]="{'visibility': (trip.availablePlaces != 0) && (4 > trip.availablePlaces) ? 'visible' : 'hidden'}">LAST PLACES!</kbd>
+</td>
+<td class="align-middle">
+    <kbd class="text-danger align-middle" [ngStyle]="{'visibility': trip.availablePlaces == 0 ? 'visible' : 'hidden'}">NO MORE AVAILABLE PLACES!</kbd>
+    <button type="button" class="btn btn-primary w-75 m-1" [ngStyle]="{'visibility': trip.availablePlaces > 0 ? 'visible' : 'hidden'}" (click)="reserveTrip(trip)">Book</button>
+    <button type="button" class="btn btn-primary w-75 m-1" [ngStyle]="{'visibility': trip.totalPlaces > trip.availablePlaces ? 'visible' : 'hidden'}" (click)="freeTrip(trip)">Unbook</button>
+    <button type="button" class="btn btn-primary w-75 m-1" (click)="removeTrip(trip)">delete</button>
+    <app-rating [tripRating]="trip.rating"></app-rating>
+</td>

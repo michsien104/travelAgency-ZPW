@@ -1,0 +1,47 @@
+<h1 class="text-center">Trip details:</h1>
+<div class="container w-75" *ngIf="trip">
+    <div id="carousel">
+        <ngb-carousel *ngIf="images">
+            <ng-template ngbSlide class="center ">
+                <div class="picsum-img-wrapper">
+                    <img src='{{ trip.image }}' alt="First picture">
+                </div>
+                <div class="carousel-caption jumbotron w-50">
+                    <h3>{{ trip.name }}</h3>
+                    <p>{{ trip.country }}</p>
+                </div>
+            </ng-template>
+            <ng-template ngbSlide>
+                <div class="picsum-img-wrapper">
+                    <img [src]="images[1]" alt="Second picture">
+                </div>
+                <div class="carousel-caption jumbotron w-50">
+                    <h3>{{ trip.name }}</h3>
+                    <p>{{ trip.country }}</p>
+                </div>
+            </ng-template>
+            <ng-template ngbSlide>
+                <div class="picsum-img-wrapper">
+                    <img [src]="images[2]" alt="Third picture">
+                </div>
+                <div class="carousel-caption jumbotron w-50">
+                    <h3>{{ trip.name }}</h3>
+                    <p>{{ trip.country }}</p>
+                </div>
+            </ng-template>
+        </ngb-carousel>
+    </div>
+
+    <div class="row">
+        <div class="col">Since: {{ trip.since | date: 'dd-MM-yyyy'}}</div>
+        <div class="col">Untill: {{ trip.untill | date: 'dd-MM-yyyy'}}</div>
+        <div class="col">Price: {{ trip.price | currency:'PLN '}}</div>
+    </div>
+    <div>
+        <h1>
+            Details:
+        </h1>
+        <span class="w-100">{{ trip.description }}</span>
+    </div>
+
+</div>

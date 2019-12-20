@@ -1,0 +1,46 @@
+<div class="container-fluid">
+    <h1>Creating new trip:</h1>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="image">Image:</label>
+            <input id="image" type="file" class="form-control" formControlName="image" />
+            <span *ngIf="formErrors.image" class="alert-danger">{{ formErrors.image }}</span>
+        </div>
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input id="name" type="text" class="form-control" formControlName="name" />
+            <span *ngIf="formErrors.name" class="alert-danger">{{ formErrors.name }}</span>
+        </div>
+        <div class="form-group">
+            <label for="country">Country:</label>
+            <input id="country" type="text" class="form-control" formControlName="country" />
+            <span *ngIf="formErrors.country" class="alert-danger">{{ formErrors.country }}</span>
+        </div>
+        <div class="form-group">
+            <label for="since">Since:</label>
+            <input id="since" type="date" class="form-control" formControlName="since" />
+            <span *ngIf="formErrors.since" class="alert-danger">{{ formErrors.since }}</span>
+        </div>
+        <div class="form-group">
+            <label for="untill">Until:</label>
+            <input id="untill" type="date" class="form-control" formControlName="untill" />
+            <span *ngIf="formErrors.untill" class="alert-danger">{{ formErrors.untill }}</span>
+        </div>
+        <div class="form-group">
+            <label for="price">Price:</label>
+            <input id="price" type="currency" class="form-control" formControlName="price" />
+            <span *ngIf="formErrors.price" class="alert-danger">{{ formErrors.price }}</span>
+        </div>
+        <div class="form-group">
+            <label for="totalPlaces">Total places:</label>
+            <input id="totalPlaces" type="currency" class="form-control" formControlName="totalPlaces" />
+            <span *ngIf="formErrors.totalPlaces" class="alert-danger">{{ formErrors.totalPlaces }}</span>
+        </div>
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <input id="description" type="currency" class="form-control" formControlName="description" />
+            <span *ngIf="formErrors.description" class="alert-danger">{{ formErrors.description }}</span>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

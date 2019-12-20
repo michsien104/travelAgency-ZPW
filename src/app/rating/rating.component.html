@@ -1,0 +1,5 @@
+<ngb-rating [(rate)]="selected" (hover)="hovered=$event" (leave)="hovered=0" [readonly]="readonly" (click)="onRatingClick()"></ngb-rating>
+<div class="form-text small">
+    <div *ngIf="readonly" class="text-success">Thanks! Your rate is: {{selected}}.</div>
+    <div *ngIf="!readonly" class="text-danger">Please rate us</div>
+</div>

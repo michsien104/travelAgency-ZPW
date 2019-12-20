@@ -1,0 +1,45 @@
+<div class="wrapper">
+
+    <nav id="sidebar" class="active">
+        <div class="sidebar-header">
+            <h3>Filter</h3>
+        </div>
+        <ul class="list-unstyled components">
+            <div [formGroup]="myFilter" class="form-group">
+                <input id="name" type="text" class="form-control w-75" placeholder="Search by name" formControlName="name" [(ngModel)]="name" />
+                <input id="country" type="text" class="form-control w-75" placeholder="Search by country" formControlName="country" [(ngModel)]="country" />
+                <input id="since" type="date" class="form-control w-75" formControlName="since" [(ngModel)]="since" />
+                <input id="untill" type="date" class="form-control w-75" formControlName="untill" [(ngModel)]="untill" />
+            </div>
+        </ul>
+    </nav>
+
+    <div id="trips-component">
+        <button type="button" id="sidebarCollapse" class="btn btn-info" (click)="toggleSideBar()">
+            <i class="fas fa-align-left"></i>
+            <span>Filter</span>
+        </button>
+        <h1 class="text-center">Our trips</h1>
+        <p [ngStyle]="{'background-color': reservedTrips > 10 ? 'green' : 'red'}">Total amount of reserved trips: {{reservedTrips}}</p>
+
+        <table class="table">
+            <thead>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Country</th>
+                <th width=100>Since</th>
+                <th width=100>Untill</th>
+                <th width=125>Price</th>
+                <th width=125>Total places</th>
+                <th width=140>Available places</th>
+                <th>Reservation</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let trip of trips | listFilter:name:country:since:untill" app-single-trip [trip]="trip" [parent]="self" (deleteTrip)="deleteTrip($event)">
+                </tr>
+            </tbody>
+        </table>
+
+        <app-header></app-header>
+    </div>
+</div>

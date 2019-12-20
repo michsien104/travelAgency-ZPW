@@ -1,0 +1,19 @@
+<div id="comments">
+    <ul>
+        <li ngFor="comment in comments">
+            <header>
+                <h1 *ngIf="comment.author.name">{{ comment.author.name }}</h1>
+                <div>
+                    <button (click)="love(comment.id)" [ngStyle]="{'loved': comment.loved }"></button>
+                    <button (click)="reply(comment.author.name)"></button>
+                </div>
+            </header>
+            <p ng-bind-html="parseContent(comment.content)"></p>
+        </li>
+    </ul>
+    <form name="form" ng-submit="addNewComment()" novalidate>
+        <input placeholder="First and second name" type="text" ng-model="newComment.author.name" required>
+        <textarea placeholder="Comment" ng-model="newComment.content" required></textarea>
+        <button type="submit">Add comment</button>
+    </form>
+</div>

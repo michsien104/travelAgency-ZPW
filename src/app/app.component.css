@@ -1,0 +1,14 @@
+.navbar {
+    margin: 0px 0px 0px 0px;
+    background-color: #7386D5;
+}
+
+.content {
+    margin-top: 60px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.nav-link {
+    color: white
+}

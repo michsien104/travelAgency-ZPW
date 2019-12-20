@@ -1,0 +1,32 @@
+<div class="container-fluid">
+    <div>
+        <nav class="navbar shadow-lg navbar-expand-lg fixed-top justify-content-center">
+            <div class="container">
+                <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+                <div *ngIf="currentUser" class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav nav-fill w-100">
+                        <li routerLinkActive="active current" class="nav-item">
+                            <a data-scroll class="nav-link" routerLink="">Trips</a>
+                        </li>
+                        <li routerLinkActive="active current" class="nav-item">
+                            <a data-scroll class="nav-link" routerLink="/newTrip">Create trip</a>
+                        </li>
+                        <li routerLinkActive="active current" class="nav-item">
+                            <a data-scroll class="nav-link" routerLink="/shoppingCart">Shopping cart</a>
+                        </li>
+                    </ul>
+                </div>
+                <div *ngIf="currentUser">
+                    <span>Currently logged as: {{ currentUser['email'] }} </span>
+                    <button (click)="logOut()">Log out</button>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="content">
+        <router-outlet></router-outlet>
+    </div>
+</div>

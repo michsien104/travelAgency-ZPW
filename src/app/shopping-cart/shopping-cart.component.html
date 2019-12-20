@@ -1,0 +1,19 @@
+<div class="container" *ngIf="!shopping">Shopping cart is empty. We strongly recommend to reserve a trip.</div>
+<div class="container" *ngIf="shopping">
+    <h1 class="text-center">My shopping cart:</h1>
+    <span>You have booked {{ shopping.totalPlaces }} places on all trips. The total cost is: {{ shopping.totalPrice | currency:'PLN ' }}</span>
+    <table class="table">
+        <tbody>
+            <tr *ngFor="let product of shopping.products" (click)="redirect(product)">
+                <td *ngIf="product.trip" class="align-middle">
+                    <img src='{{product.trip.image}}' width=300 height=200 class="rounded-circle">
+                </td>
+                <td *ngIf="product.trip" class="align-middle">{{product.trip.name | uppercase}}</td>
+                <td *ngIf="product.trip" class="align-middle">{{product.trip.country | uppercase}}</td>
+                <td *ngIf="product.trip" class="align-middle">{{product.trip.price * product.reservedPlaces | currency:'PLN '}} </td>
+                <td *ngIf="product.trip" class="align-middle">{{ product.reservedPlaces }} reserved places</td>
+            </tr>
+        </tbody>
+    </table>
+    <button type="button" class="btn btn-primary w-100 m-1">Continue with payment</button>
+</div>
